@@ -36,7 +36,7 @@ var game = {
     counter: 120,
     startGame: function() {
         for (var choice = 0; choice < questions.length; choice++) {
-            var question = "<h3>" + questions[choice].question + "</h3>";
+            var question = "<h2>" + questions[choice].question + "</h2>";
             this.quiz.append(question);
             for (var answer = 0; answer < questions[choice].answers.length; answer++) {
             var answers = questions[choice].answers[answer];
@@ -71,7 +71,6 @@ var assemble = {
     },
     results: function() {
         clearInterval(setInterval(game.countdown, 1000));
-        $("#sub-wrapper h2").remove();
         game.quiz.html("<h2>All Done!</h2>");
         game.quiz.append("<h3>Correct Answers: " + game.correct + "</h3>");
         game.quiz.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
