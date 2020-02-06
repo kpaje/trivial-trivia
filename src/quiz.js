@@ -1,4 +1,4 @@
-const QUESTIONS = require("./constants");
+const QUESTIONS = require("./common/constants");
 
 console.log(QUESTIONS);
 
