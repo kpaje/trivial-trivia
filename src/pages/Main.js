@@ -14,8 +14,8 @@ export default function Main() {
     }
   };
 
-  const renderAnswers = () => {
-    return Object.values(quiz[0].question).map((thing, num) => {
+  const renderAnswers = i => {
+    return Object.values(quiz[i].question).map((thing, num) => {
       return <span key={num}>{thing}</span>;
     });
   };
@@ -52,25 +52,25 @@ export default function Main() {
 
   return (
     <div>
-      <h4>{renderAnswers()}</h4>
+      <h4>{renderAnswers(0)}</h4>
       <form>{renderQuestion(0)}</form>
 
-      <h4>{renderAnswers()}</h4>
+      <h4>{renderAnswers(1)}</h4>
       <form>{renderQuestion(1)}</form>
 
-      <h4>{renderAnswers()}</h4>
+      <h4>{renderAnswers(2)}</h4>
       <form>{renderQuestion(2)}</form>
 
-      <h4>{renderAnswers()}</h4>
+      <h4>{renderAnswers(3)}</h4>
       <form>{renderQuestion(3)}</form>
 
-      <h4>{renderAnswers()}</h4>
+      <h4>{renderAnswers(4)}</h4>
       <form>{renderQuestion(4)}</form>
 
-      <h4>{renderAnswers()}</h4>
+      <h4>{renderAnswers(5)}</h4>
       <form>{renderQuestion(5)}</form>
 
-      <h4>{renderAnswers()}</h4>
+      <h4>{renderAnswers(6)}</h4>
       <form>{renderQuestion(6)}</form>
     </div>
   );
