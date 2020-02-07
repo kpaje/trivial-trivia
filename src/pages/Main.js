@@ -14,64 +14,36 @@ export default function Main() {
     }
   };
 
-  const renderAnswers = i => {
-    return Object.values(quiz[i].question).map((thing, num) => {
-      return <span key={num}>{thing}</span>;
-    });
-  };
-
-  const renderQuestion = i => {
-    return Object.values(quiz[i].answers).map((item, num) => {
+  const renderQuiz = () => {
+    return Object.keys(quiz).map(function(item) {
+      // console.log(item); // key
+      // console.log(quiz[item].question); // value
+      // console.log(quiz[item].answers[3]);
+      console.log(quiz[item].id);
       return (
-        <div className="radio" key={num}>
-          <label>
-            <input
-              type="radio"
-              id={item}
-              value={item}
-              checked={checked}
-              onChange={() => handleOptionChange()}
-            />
-            {item}
-          </label>
+        <div key={item}>
+          <h4>{quiz[item].question}</h4>
+
+          <div className="radio">
+            {Object.values(quiz[item].answers).map(element => (
+              <p key={element}>
+                <label>
+                  <input
+                    type="radio"
+                    id={quiz[item].id}
+                    value={item}
+                    checked={checked}
+                    onChange={() => handleOptionChange()}
+                  />
+                  {element}
+                </label>
+              </p>
+            ))}
+          </div>
         </div>
       );
     });
   };
 
-  const loadQuiz = () => {
-    for (let i = 0; i < 7; i++) {
-      return (
-        <React.Fragment>
-          <div>{renderAnswers(i)}</div>
-          <form>{renderQuestion(i)}</form>
-        </React.Fragment>
-      );
-    }
-  };
-
-  return (
-    <div>
-      <h4>{renderAnswers(0)}</h4>
-      <form>{renderQuestion(0)}</form>
-
-      <h4>{renderAnswers(1)}</h4>
-      <form>{renderQuestion(1)}</form>
-
-      <h4>{renderAnswers(2)}</h4>
-      <form>{renderQuestion(2)}</form>
-
-      <h4>{renderAnswers(3)}</h4>
-      <form>{renderQuestion(3)}</form>
-
-      <h4>{renderAnswers(4)}</h4>
-      <form>{renderQuestion(4)}</form>
-
-      <h4>{renderAnswers(5)}</h4>
-      <form>{renderQuestion(5)}</form>
-
-      <h4>{renderAnswers(6)}</h4>
-      <form>{renderQuestion(6)}</form>
-    </div>
-  );
+  return <div>{renderQuiz()}</div>;
 }
