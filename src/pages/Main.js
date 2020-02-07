@@ -1,5 +1,5 @@
 import React from "react";
-import QUESTIONS from "../common/constants";
+import QUIZ from "../common/constants";
 
 export default function Main() {
   // let correct = 0;
@@ -7,36 +7,61 @@ export default function Main() {
   // const counter = 120;
   // let choice = 0;
 
-  console.log(QUESTIONS[0].answers);
+  console.log(QUIZ[0].answers);
 
-  const renderQuestions = () => {
-    return Object.entries(QUESTIONS).map(([key, value]) => {
-      return (
-        <div key={key}>
-          <p>
-            <span> {value.question}</span>
-          </p>
-        </div>
-      );
-    });
-  };
+  // const renderQUIZ = () => {
+  //   return Object.entries(QUIZ).map(([key, value]) => {
+  //     return (
+  //       <div key={key}>
+  //         <p>
+  //           <span> {value.question}</span>
+  //         </p>
+  //       </div>
+  //     );
+  //   });
+  // };
 
   const renderAnswers = () => {
-    return Object.entries(QUESTIONS).map(([key, value], index) => {
-      return (
-        <React.Fragment>
-          <p>
-            <li key={key}> {value.answers}</li>
-          </p>
-        </React.Fragment>
+    {
+      return QUIZ.map((item, index) =>
+        item.answers.map((answer, index) => (
+          <div className="radio" key={index}>
+            <p>
+              <label>
+                <input type="radio" value={index} checked={false} />
+                {answer}
+              </label>
+            </p>
+          </div>
+        ))
       );
-    });
+    }
   };
+
+  // const renderAnswers = () => {
+  //   return Object.entries(QUIZ).map(([key, value], index) => {
+  //     return (
+  //       <React.Fragment>
+  //         <div className="radio">
+  //           <p>
+  //             <label>
+  //               <input type="radio" value={key} checked={false} />
+  //               {value.answers[index]}
+  //             </label>
+  //           </p>
+  //         </div>
+  //       </React.Fragment>
+  //     );
+  //   });
+  // };
 
   return (
     <div>
-      {renderQuestions()}
+      {/* {renderQUIZ()} */}
       {renderAnswers()}
+      {QUIZ.answers}
+
+      <form></form>
     </div>
   );
 }
