@@ -7,7 +7,7 @@
       "Bears beat Battlestar Galactica",
       "All of The Above"
     ],
-    "correctAnswer": "All of The Above"
+    "correctAnswer": ["All of The Above"]
   },
   {
     "question": "Bears derive their name from?",

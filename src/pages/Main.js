@@ -1,67 +1,77 @@
-import React from "react";
-import QUIZ from "../common/constants";
+import React, { useState } from "react";
+import quiz from "../common/quiz";
 
 export default function Main() {
+  const [checked, setChecked] = useState(false);
   // let correct = 0;
   // let incorrect = 0;
   // const counter = 120;
   // let choice = 0;
 
-  console.log(QUIZ[0].answers);
-
-  // const renderQUIZ = () => {
-  //   return Object.entries(QUIZ).map(([key, value]) => {
-  //     return (
-  //       <div key={key}>
-  //         <p>
-  //           <span> {value.question}</span>
-  //         </p>
-  //       </div>
-  //     );
-  //   });
-  // };
+  const handleOptionChange = () => {
+    if (!checked) {
+      setChecked(true);
+    }
+  };
 
   const renderAnswers = () => {
-    {
-      return QUIZ.map((item, index) =>
-        item.answers.map((answer, index) => (
-          <div className="radio" key={index}>
-            <p>
-              <label>
-                <input type="radio" value={index} checked={false} />
-                {answer}
-              </label>
-            </p>
-          </div>
-        ))
+    return Object.values(quiz[0].question).map((thing, num) => {
+      return <span key={num}>{thing}</span>;
+    });
+  };
+
+  const renderQuestion = i => {
+    return Object.values(quiz[i].answers).map((item, num) => {
+      return (
+        <div className="radio" key={num}>
+          <label>
+            <input
+              type="radio"
+              id={item}
+              value={item}
+              checked={checked}
+              onChange={() => handleOptionChange()}
+            />
+            {item}
+          </label>
+        </div>
+      );
+    });
+  };
+
+  const loadQuiz = () => {
+    for (let i = 0; i < 7; i++) {
+      return (
+        <React.Fragment>
+          <div>{renderAnswers(i)}</div>
+          <form>{renderQuestion(i)}</form>
+        </React.Fragment>
       );
     }
   };
 
-  // const renderAnswers = () => {
-  //   return Object.entries(QUIZ).map(([key, value], index) => {
-  //     return (
-  //       <React.Fragment>
-  //         <div className="radio">
-  //           <p>
-  //             <label>
-  //               <input type="radio" value={key} checked={false} />
-  //               {value.answers[index]}
-  //             </label>
-  //           </p>
-  //         </div>
-  //       </React.Fragment>
-  //     );
-  //   });
-  // };
-
   return (
     <div>
-      {/* {renderQUIZ()} */}
-      {renderAnswers()}
-      {QUIZ.answers}
+      <h4>{renderAnswers()}</h4>
+      <form>{renderQuestion(0)}</form>
 
-      <form></form>
+      <h4>{renderAnswers()}</h4>
+      <form>{renderQuestion(1)}</form>
+
+      <h4>{renderAnswers()}</h4>
+      <form>{renderQuestion(2)}</form>
+
+      <h4>{renderAnswers()}</h4>
+      <form>{renderQuestion(3)}</form>
+
+      <h4>{renderAnswers()}</h4>
+      <form>{renderQuestion(4)}</form>
+
+      <h4>{renderAnswers()}</h4>
+      <form>{renderQuestion(5)}</form>
+
+      <h4>{renderAnswers()}</h4>
+      <form>{renderQuestion(6)}</form>
     </div>
   );
 }
